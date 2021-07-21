@@ -7,20 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.moringaschool.myrestaurants.adapters.RestaurantListAdapter;
 import com.moringaschool.myrestaurants.models.Business;
-import com.moringaschool.myrestaurants.models.Category;
 import com.moringaschool.myrestaurants.models.YelpBusinessesSearchResponse;
 import com.moringaschool.myrestaurants.network.YelpApi;
 import com.moringaschool.myrestaurants.network.YelpClient;
-import com.moringaschool.myrestaurants.ui.MyRestaurantsArrayAdapter;
 
 import java.util.List;
 
@@ -30,8 +24,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RestaurantsActivity extends AppCompatActivity {
-    private static final String TAG = RestaurantsActivity.class.getSimpleName();
+public class RestaurantListActivity extends AppCompatActivity {
+    private static final String TAG = RestaurantListActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
@@ -61,10 +55,10 @@ public class RestaurantsActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     restaurants = response.body().getBusinesses();
-                    mAdapter = new RestaurantListAdapter(RestaurantsActivity.this, restaurants);
+                    mAdapter = new RestaurantListAdapter(RestaurantListActivity.this, restaurants);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
-                            new LinearLayoutManager(RestaurantsActivity.this);
+                            new LinearLayoutManager(RestaurantListActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
