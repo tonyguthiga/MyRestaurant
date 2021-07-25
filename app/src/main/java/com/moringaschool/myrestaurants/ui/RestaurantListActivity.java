@@ -1,4 +1,4 @@
-package com.moringaschool.myrestaurants;
+package com.moringaschool.myrestaurants.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.moringaschool.myrestaurants.R;
 import com.moringaschool.myrestaurants.adapters.RestaurantListAdapter;
 import com.moringaschool.myrestaurants.models.Business;
 import com.moringaschool.myrestaurants.models.YelpBusinessesSearchResponse;
