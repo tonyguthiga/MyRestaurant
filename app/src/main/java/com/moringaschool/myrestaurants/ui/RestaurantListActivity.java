@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,6 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantListActivity extends AppCompatActivity {
+//    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
     private static final String TAG = RestaurantListActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -42,8 +47,16 @@ public class RestaurantListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        Log.d("Shared Pref Location", mRecentAddress);
+//        if(mRecentAddress != null){
+//            getRestaurants(mRecentAddress);
+//        }
+
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
+        getRestaurants(location);
 
         YelpApi client = YelpClient.getClient();
 
@@ -76,7 +89,12 @@ public class RestaurantListActivity extends AppCompatActivity {
             }
 
         });
+
     }
+
+    private void getRestaurants(String mRecentAddress) {
+    }
+
 
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
