@@ -60,6 +60,8 @@ public class Business {
      * No args constructor for use in serialization
      * 
      */
+    private String pushId;
+
     public Business() {
     }
 
@@ -218,6 +220,14 @@ public class Business {
 
     public void setTransactions(List<String> transactions) {
         this.transactions = transactions;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }
